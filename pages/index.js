@@ -1,6 +1,23 @@
 import Head from 'next/head'
+import { useFormik } from 'formik';
+import apiServer from '../components/server';
 
 export default function Home() {
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      device_name: 'next.js',
+    },
+    onSubmit: values => {
+      apiServer
+        .post('/api/sanctum/token', values)
+        .then(response => {
+          console.log(response);
+        });
+    },
+  });
+
   return (
     <>
       <Head>
@@ -13,14 +30,23 @@ export default function Home() {
       </Head>
       <div className="text-center">
         <main className="form-signin">
-          <form>
+          <form onSubmit={formik.handleSubmit}>
+            
             <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-            <label htmlFor="inputEmail" className="visually-hidden">Email address</label>
-            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
+            
+            <label htmlFor="inputEmail" className="visually-hidden">Email address</label>            
+            <input id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} placeholder="Email address" className="form-control" required autoFocus />
+
             <label htmlFor="inputPassword" className="visually-hidden">Password</label>
-            <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+            <input id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} placeholder="Password" className="form-control" required />
+
+            <input id="device_name" name="device_name" type="hidden" value={formik.values.device_name} />
+
             <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             <p className="mt-5 mb-3 text-muted">&copy; 2021 Disc Store</p>
+      
+            {/* <button type="submit">Submit</button> */}
+          
           </form>
         </main>
       </div>

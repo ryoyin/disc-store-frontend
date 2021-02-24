@@ -1,0 +1,5 @@
+module.exports = {
+    env: {
+        API_SERVER_ADDRESS: 'http(s)://your-api-server-address',
+    },
+}
