@@ -32,9 +32,7 @@ export default function Login() {
         .then(response => {
           console.log('show response');
           console.log(response);
-          let user = {
-            token: response.data
-          }
+          let user = response.data.user
           setCookie('user', JSON.stringify(user), {
             path: "/",
             maxAge: 60 * 60 * 24 * 30, // Expires after 1hr
