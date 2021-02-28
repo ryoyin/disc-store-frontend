@@ -1,19 +1,24 @@
 import { checkUser } from '../lib/auth'
-import dynamic from 'next/dynamic'
 import React, { createContext, useContext, useState, useEffect } from 'react'
-
-const HomeLayout = dynamic(() => import('../components/homeLayout'),{ssr:false})
+import Link from 'next/link'
+import Layout from '../layouts/layout'
 
 export default function Home() {
   
   const user = checkUser({
     isLoginPage: false,
     redirectTo: '/user/login',
-    redirectIfFound: true
+    redirectIfFound: false
   })
+  
+  console.log(user)
 
-  return (    
-    <HomeLayout user={ user } />
+
+  return (
+    <Layout user={ user }>
+      <div>test</div>
+    </Layout>
   )
 
 }
+
