@@ -15,7 +15,7 @@ export default function Layout({user, children}) {
       <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#"><img src="./images/logo.png" /></a>
+            <a className="navbar-brand" href="#"><img src="./images/logo.jpeg" /></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -86,7 +86,7 @@ const SignOutButton = () => {
 const SignUpButton = () => {
   return (
     <button className="btn text-nowrap">
-      <Link href="/user/regiser">
+      <Link href="/user/register">
         <a>Sign up</a>
       </Link>
     </button>
