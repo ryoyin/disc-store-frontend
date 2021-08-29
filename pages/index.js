@@ -25,8 +25,10 @@ function Home({discs}) {
   
   return (
     <Layout user={ user }>
-      <div class="row">
-        <DiscList discs={discs || []}></DiscList>
+      <div className="container">
+        <div className="row">
+          <DiscList discs={discs || []}></DiscList>
+        </div>
       </div>
     </Layout>
   )

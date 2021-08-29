@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+main {
+  margin-top: 30px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -13,4 +17,26 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.disc_cover_image_block {
+  text-align: center;
+}
+
+.disc_cover_image {
+  width: auto !important;
+  height: 170px;
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1rem !important;
+}
+
+.add-to-cart {
+  text-decoration: none;
+  background-color: #0d6efd;
+  color: white;
+  padding: 3px 10px;
+  font-size: 12px;
 }
