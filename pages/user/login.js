@@ -28,7 +28,7 @@ export default function Login() {
     },
     onSubmit: values => {
       apiServer
-        .post('/api/sanctum/token', values)
+        .post('/api/user/token', values)
         .then(response => {
           console.log('show response');
           console.log(response);
