@@ -38,12 +38,32 @@ function Home({discs, categories }) {
 
   return (
     <Layout user={ user } categories={ categories }>
-      <div className="container">
-        <div className="row">
-          <div className="mb-3">home</div>
-          <DiscList discs={discs || []}></DiscList>
+        <div className="container">
+            <div className="row">
+                <div className="mb-3">home {'>'} about</div>
+                <div className="mb-3">
+                    <p>Hi everyone,</p>
+                    
+                    <p>Welcome to my ecommerce website. In this website, I have used the latest frontend and backend skills.</p>
+
+                    <p>
+                        Frontend built with React.js + Next.js, server side rendering is used for SEO friendly.<br />
+                        Github repo can be found at: <a href="https://github.com/ryoyin/disc-store-frontend.git" target="_blank">https://github.com/ryoyin/disc-store-frontend.git</a>
+                    </p>
+
+                    <p>
+                        Backend built with PHP Laravel and it's built in package Sanctum to handle authentication.<br />
+                        Github repo can be found at: <a href="https://github.com/ryoyin/disc-store-admin.git" target="_blank">https://github.com/ryoyin/disc-store-admin.git</a>
+                    </p>
+
+                    <p>
+                        Regards,<br />
+                        Roy Ho<br />
+                        <a href="mailto:kwanyin2000@gmail.com">kwanyin2000@gmail.com</a>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </Layout>
   )
 
