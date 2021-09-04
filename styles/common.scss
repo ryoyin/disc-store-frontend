@@ -3,3 +3,30 @@
         height: 55px;
     }
 }
+
+.detail {
+    :nth-child(1) {
+        text-align: center;
+        img {
+            width: 50%;
+        }
+    }
+    :nth-child(2) {
+        div {
+            text-align: left;
+        }
+        .price {
+            color: blue;
+            padding-left: 10px;
+        }
+    }
+}
+
+.related-disc {
+    .disc {
+        text-align: center;
+        img {
+            width: 100%;
+        }
+    }
+}
