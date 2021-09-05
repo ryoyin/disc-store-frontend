@@ -25,7 +25,7 @@ class DiscList extends React.Component {
                             <div><small>{disc.studio.name}</small></div>
                             <div className="disc_cover_image_block">
                               <Link href={`/disc/${ disc.slug }`} as={`/disc/${ disc.slug }`}>
-                                  <a><img className="card-img-top disc_cover_image" src={"http://disc.local-test.com/uploads/" + disc.coverImage.path} alt="" /></a>
+                                    <a><img className="card-img-top disc_cover_image" src={"http://disc.local-test.com/uploads/" + disc.coverImage.path} alt="" /></a>
                               </Link>
                             </div>
                             <p className="card-text">{this.shortDescription(disc.description)}</p>
@@ -33,8 +33,8 @@ class DiscList extends React.Component {
                         <div className="card-footer">
                             {/* <small className="text-muted">{disc.rating}</small> */}
                             <small className="text-muted">${disc.price}</small>
-                            <Link href={`/disc/${ disc.slug }`} as={`/disc/${ disc.slug }`}>
-                              <a className="add-to-cart float-end">add to cart</a>
+                            <Link href={`/cart?addItem=${ disc.id }`} as={`/cart?addItem=${ disc.id }`}>
+                                <a className="add-to-cart float-end">add to cart</a>
                             </Link>                            
                         </div>
                     </div>

@@ -68,6 +68,11 @@ function DiscDetail({disc, categories }) {
             <div className='mb-2'>
               <div>Category: { disc.detail.category.name }</div>
               <div>Studio: { disc.detail.studio.name }</div>
+              <div>
+                <Link href={`/cart?addItem=${ disc.detail.id }`} as={`/cart?addItem=${ disc.detail.id }`}>
+                  <a className="add-to-cart">add to cart</a>
+                </Link>
+              </div>
             </div>
             <div>{ disc.detail.description }</div>
           </div>
