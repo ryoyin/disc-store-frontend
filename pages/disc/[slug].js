@@ -51,8 +51,8 @@ function DiscDetail({disc, categories }) {
           setAlertType("")
           setAlertEffect("")
           setAlertMessage("")
-        }, 2500))        
-      }, 3000)
+        }, 3000))        
+      }, 100)
     })
   }
 
