@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import apiServer from '../../lib/server';
 import { checkUser } from '../../lib/auth'
 import Link from 'next/link'
 import Layout from '../../layouts/layout'
@@ -19,11 +20,41 @@ DiscDetail.getInitialProps = async (ctx) => {
 
 function DiscDetail({disc, categories }) {
 
+  const [showAlert, setShowAlert] = useState("d-none")
+  const [alertEffect, setAlertEffect] = useState("")
+  const [alertType, setAlertType] = useState("")
+  const [alertMessage, setAlertMessage] = useState("")
+
   const user = checkUser({
     isLoginPage: false,
     redirectTo: '/user/login',
     redirectIfFound: false
   })
+
+  // console.log(user)
+
+  const addToCart = async (e, disc_id) => {
+    e.preventDefault()
+
+    // const response = await apiServer.post('/api/cart/addItem', { user_id: user.id, disc_id: disc_id }, { headers: {"Authorization" : `Bearer ` + user.token} })
+
+    apiServer.post('/api/cart/addItem', { user_id: user.id, disc_id: disc_id }, { headers: {"Authorization" : `Bearer ` + user.token} })
+    .then(function (response) {
+      console.log(response)
+      setShowAlert("")
+      setAlertType("success")
+      setAlertMessage("This item have been added to your cart.")
+
+      setTimeout(() => {
+        setAlertEffect("fade-out", setTimeout(() => {
+          setShowAlert("d-none")
+          setAlertType("")
+          setAlertEffect("")
+          setAlertMessage("")
+        }, 2500))        
+      }, 3000)
+    })
+  }
 
   const relatedDisc = (relatedDiscs) => {
     // console.log(relatedDiscs)
@@ -45,14 +76,12 @@ function DiscDetail({disc, categories }) {
         </div>
       )
     )
-    // return (
-    //   <div>123</div>
-    // )
   }
 
   return (
     <Layout user={ user } categories={ categories }>
       <div className="container">
+        <div className={`alert alert-${alertType} ${showAlert} ${alertEffect}`} role="alert">{alertMessage}</div>
         <div className="row">
           <div className="mb-3">home {'>'} disc {'>'} { disc.detail.name }</div>
         </div>
@@ -69,9 +98,7 @@ function DiscDetail({disc, categories }) {
               <div>Category: { disc.detail.category.name }</div>
               <div>Studio: { disc.detail.studio.name }</div>
               <div>
-                <Link href={`/cart?addItem=${ disc.detail.id }`} as={`/cart?addItem=${ disc.detail.id }`}>
-                  <a className="add-to-cart">add to cart</a>
-                </Link>
+                <a className="add-to-cart" onClick={(e) => addToCart(e, disc.detail.id)}>add to card</a>
               </div>
             </div>
             <div>{ disc.detail.description }</div>

@@ -30,3 +30,22 @@
         }
     }
 }
+
+.add-to-cart {
+    text-decoration: none;
+    background-color: #0d6efd;
+    color: white;
+    padding: 3px 10px;
+    font-size: 12px;
+
+    &:hover {
+        color: #ffffff;
+        cursor: pointer;
+    }
+}
+
+.fade-out {
+    visibility: hidden;
+    transition: visibility 0s 2s, opacity 2s linear;
+    opacity: 0;
+}
