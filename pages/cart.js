@@ -22,11 +22,22 @@ function Home({categories }) {
     redirectIfFound: false
   })
 
-  const cartBlock = () => {
+  const CartBlock = () => {
     if (user) {
-      <>
-        Your Shopping cart is empty.
-      </>
+      
+      useEffect(() => {
+        fetch('http://disc.local-test.com/api/cart/listItem/' + user.id, { headers: {"Authorization" : `Bearer ` + user.token} })
+        .then(response => response.json())
+        .then(data => console.log(data));
+        
+      }, []);
+
+      return (
+        <>
+          Your Shopping cart is empty.
+        </>
+      )
+
     } else {     
 
       useEffect(() => {
@@ -48,7 +59,7 @@ function Home({categories }) {
         <div className="row">
           <div className="mb-3">home {'>'} cart</div>
           <div className="mb-3">
-              {cartBlock()}
+              <CartBlock />
           </div>
         </div>
       </div>

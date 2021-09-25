@@ -13,6 +13,7 @@ export default function Layout({user, categories, children}) {
 
   return (    
     <>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"></link>
       <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
@@ -94,10 +95,15 @@ const SignUpButton = () => {
 
 const ProfileButton = ({user}) => {
   return (
-    <button className="btn text-nowrap">
-      <Link href="/user">
-        <a>{user.name}</a>
+    <>
+      <button className="btn text-nowrap">
+        <Link href="/user">
+          <a>{user.name}</a>
+        </Link>
+      </button>
+      <Link href="/cart">
+        <i className="fas fa-shopping-cart"></i>
       </Link>
-    </button>
+    </>
   )
 }

@@ -49,3 +49,12 @@
     transition: visibility 0s 3s, opacity 3s linear;
     opacity: 0;
 }
+
+.fa-shopping-cart {
+    position: relative;
+    top: 11px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
